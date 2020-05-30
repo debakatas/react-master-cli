@@ -26,8 +26,8 @@
 -   Las rutas de imagenes y archivos estaticos son relativos a donde se sirve la aplicación, no a donde se use en el componente.
 
     ```
-    ❌ <img src="../../public/images/chewy.png />
-    ✅ <img src="/images/chewy.png />
+    ❌ <img src="../../public/images/chewy.png" />
+    ✅ <img src="/images/chewy.png" />
     ```
 
 -   Un componente _debe_ solo retornar un nodo, para eso revisa [React Fragments][react fragments]

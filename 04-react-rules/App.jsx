@@ -22,7 +22,7 @@ const App = () => {
                     </figcaption>
                 </figure>
             </main>
-            <footer>deBakatas memes {date} ©</footer>
+            <footer>deBakatas memes {date}©</footer>
         </>
     );
 };

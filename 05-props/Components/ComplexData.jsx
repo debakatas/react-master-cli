@@ -1,11 +1,16 @@
 import React from 'react';
+import Persona from '../Persona';
 
-const ComplexData = (props) => (
+const Personas = (props) => (
     <ul>
-        {props.list.map((listElement) => (
-            <li>{listElement}</li>
+        {props.list.map((persona) => (
+            <Persona
+                name={persona.name}
+                edad={persona.edad}
+                operation={props.operation}
+            />
         ))}
     </ul>
 );
 
-export default ComplexData;
+export default Personas;
