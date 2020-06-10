@@ -8,6 +8,8 @@ const good = '/the-good-place.png';
 const twilight = '/twilight-zone.png';
 
 const options = [show, betty, midnight, twilight, good];
+const int = Math.floor(Math.random() * 10);
+console.log(int);
 
 // Creamos una clase usando como base React.Componente
 // para tener todo el uso
@@ -61,7 +63,7 @@ class App extends Component {
                 <figure>
                     <img className="show" src={this.state.on} alt="" />
 
-                    <button type="button" onClick={this.changeShow}>
+                    <button type="button" className="tv-button">
                         <img className="tv" src="/tv.png" alt="" />
                     </button>
                 </figure>
