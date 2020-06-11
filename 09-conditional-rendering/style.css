@@ -65,7 +65,7 @@ img {
     left: 50%;
     position: fixed;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0deg);
     transform-origin: center center;
     max-width: 400px;
 }
