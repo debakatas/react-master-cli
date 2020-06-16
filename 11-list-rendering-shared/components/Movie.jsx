@@ -64,7 +64,9 @@ const Movie = ({
             className="delete"
             onClick={() => deleteMovie(name)}
         >
-            ❌
+            <span role="img" aria-label="delete">
+                ❌
+            </span>
         </button>
     </li>
 );
