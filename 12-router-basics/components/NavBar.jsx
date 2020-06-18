@@ -1,22 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => (
     <nav>
         <ul>
             <li>
-                <a href="#">
+                <Link to="/perfil/sdadsas">
                     <img src="/nasa.png" alt="" />
-                </a>
+                </Link>
             </li>
             <li>
-                <a href="#">
+                <Link to="/spacex">
                     <img src="/spacex.png" alt="" />
-                </a>
+                </Link>
             </li>
             <li>
-                <a href="#">
+                <Link to="/roscosmos">
                     <img src="/roscosmos.png" alt="" />
-                </a>
+                </Link>
             </li>
         </ul>
     </nav>

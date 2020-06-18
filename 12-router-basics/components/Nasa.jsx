@@ -1,10 +1,17 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-const NASA = () => (
+const NASA = ({ match }) => (
     <article>
         <figure>
+            <Switch>
+                <Route
+                    path="/agenciaespacial/algo"
+                    component={() => <div>dentro de</div>}
+                />
+            </Switch>
             <figcaption>
-                <h2>NASA</h2>
+                <h2>{match.params.nicknameUsuario}</h2>
                 <p>
                     The National Aeronautics and Space Administration (NASA;
                     /ˈnæsə/) is an independent agency of the United States
