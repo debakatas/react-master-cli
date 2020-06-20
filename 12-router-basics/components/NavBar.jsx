@@ -5,17 +5,17 @@ const NavBar = () => (
     <nav>
         <ul>
             <li>
-                <Link to="/perfil/sdadsas">
+                <Link to="/agency/nasa">
                     <img src="/nasa.png" alt="" />
                 </Link>
             </li>
             <li>
-                <Link to="/spacex">
+                <Link to="/agency/spacex">
                     <img src="/spacex.png" alt="" />
                 </Link>
             </li>
             <li>
-                <Link to="/roscosmos">
+                <Link to="/agency/roscosmos">
                     <img src="/roscosmos.png" alt="" />
                 </Link>
             </li>
