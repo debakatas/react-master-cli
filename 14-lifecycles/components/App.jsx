@@ -36,7 +36,10 @@ class App extends Component {
     //
     componentDidMount() {
         // Vamos a cargar una información false
-        pseudoFetch(true);
+        pseudoFetch(true)
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
         // Cuando este la info, cambiamos el ready a true
     }
 
