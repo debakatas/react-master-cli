@@ -1,11 +1,12 @@
 import React from 'react';
+import { getTime } from '../formatTime';
 
-const CutTree = () => (
+const CutTree = (props) => (
     <footer>
         <p>
             <small>Último arbol cortado:</small>
             <span>
-                <em>PenPen</em> a las 8:52PM
+                <em>{props.name}</em> a las {getTime(props.time)}
             </span>
         </p>
     </footer>

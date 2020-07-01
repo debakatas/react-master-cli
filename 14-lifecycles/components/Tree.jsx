@@ -5,13 +5,17 @@ class Tree extends Component {
 
     componentWillUnmount() {
         // Aqui informamos al App que vamos a ser borrados :(
+        this.props.asesinoDeArboles(this.props.name);
     }
 
     render() {
         return (
             <li>
                 {/* Aqui tendremos que borrar el elemento */}
-                <button type="button">
+                <button
+                    type="button"
+                    onClick={() => this.props.deleteTree(this.props.name)}
+                >
                     <img src="/trash.svg" alt="Delete tree" />
                 </button>
 
@@ -19,7 +23,7 @@ class Tree extends Component {
                     <img src="/tree.svg" alt="Tomate Ipereum" />
                     <figcaption>
                         <h2>
-                            Plantman
+                            {this.props.name}
                             <a
                                 href="https://www.google.com/maps/@4.6564875,-74.0652613,15z"
                                 target="_blank"
@@ -33,11 +37,11 @@ class Tree extends Component {
                         </h2>
                         <h3>
                             <a
-                                href="https://en.wikipedia.org/wiki/Anadenanthera_peregrina"
+                                href={this.props.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Anadenanthera peregrina
+                                {this.props.kind}
                             </a>
                         </h3>
                         <small>Via Mozilla el 13 de junio a las 8:11PM</small>

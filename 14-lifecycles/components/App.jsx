@@ -15,46 +15,56 @@ class App extends Component {
                 name: 'PenPen',
                 time: 1592869197784,
             },
-            trees: [
-                {
-                    name: 'Plantman',
-                    kind: 'Anadenanthera peregrina',
-                    link:
-                        'https://en.wikipedia.org/wiki/Anadenanthera_peregrina',
-                    location: {
-                        latitude: 4.650505921557595,
-                        longitude: -74.06906881237403,
-                    },
-                    created: 1592869197784,
-                    browser: 'Mozilla',
-                },
-            ],
+            trees: [],
             ready: false,
         };
     }
 
     //
     componentDidMount() {
-        // Vamos a cargar una información false
-        pseudoFetch(true)
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
-        // Cuando este la info, cambiamos el ready a true
+        const stateString = localStorage.getItem('state');
+        const stateObject = JSON.parse(stateString);
+        this.setState(stateObject);
     }
 
     componentDidUpdate() {
         // Aqui podemos cada que haya cambios los guardemos en el localstorage
+        localStorage.setItem('state', JSON.stringify(this.state));
     }
 
-    createTree = () => {
+    createTree = (planta, nombre) => {
         // Crea un arbol, ¿como lo harías?
-        this.setState();
+        this.setState((prevState) => {
+            const copyTrees = [...prevState.trees];
+            copyTrees.push({
+                name: nombre,
+                link: planta.link,
+                kind: planta.name,
+            });
+            return {
+                trees: copyTrees,
+            };
+        });
     };
 
-    deleteTree = () => {
+    deleteTree = (name) => {
         // Borra un arbol, ¿como lo harías?
-        this.setState();
+        this.setState((prevState) => {
+            const copy = [...prevState.trees];
+            const copyMinusCurrent = copy.filter((tree) => tree.name !== name);
+            return {
+                trees: copyMinusCurrent,
+            };
+        });
+    };
+
+    showCutTree = (name) => {
+        this.setState({
+            cutTree: {
+                name,
+                time: new Date(),
+            },
+        });
     };
 
     render() {
@@ -63,7 +73,11 @@ class App extends Component {
                 <Header />
 
                 <Form trees={this.state.trees} createTree={this.createTree} />
-                <Trees trees={this.state.trees} deleteTree={this.deleteTree} />
+                <Trees
+                    trees={this.state.trees}
+                    deleteTree={this.deleteTree}
+                    matarArbolito={this.showCutTree}
+                />
 
                 {/*
                     Solo se debería mostrar si
