@@ -10,6 +10,8 @@ const initialState = {
 const reductorGeneral = (state = initialState, action) => {
     switch (action.type) {
         case aumentarCuenta.type: {
+            console.log(action.equipo);
+
             return {
                 ...state,
                 contador: state.contador + 1,

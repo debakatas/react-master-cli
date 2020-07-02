@@ -14,7 +14,7 @@ const Jonas = (props) => {
                     <button
                         style={{ fontSize: '3rem' }}
                         type="button"
-                        onClick={props.cambiarCuenta}
+                        onClick={() => props.cambiarCuenta('salvaje')}
                     >
                         Cambiame! {props.contador}
                     </button>
