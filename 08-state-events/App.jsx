@@ -1,56 +1,44 @@
 import React, { Component } from 'react';
 import './style.css';
+import { connect } from 'react-redux';
+import {
+    aumentarMarcardorAction,
+    disminuirMarcardorAction,
+} from './redux/actions';
 
 class App extends Component {
-    state = {
-        corinthians: 0,
-        santos: 0,
-    };
-
-    aumente = (equipo) => {
-        this.setState((prevState) => ({
-            [equipo]: prevState[equipo] + 1,
-        }));
-    };
-
-    disminuya = (equipo) => {
-        this.setState((prevState) => ({
-            [equipo]: prevState[equipo] - 1,
-        }));
-    };
-
     render() {
         return (
             <dl>
                 <div className="corinthians">
-                    <dd>{this.state.corinthians}</dd>
+                    <dd>{this.props.corinthians}</dd>
                     <dt>Corinthians</dt>
                     <button
                         type="button"
-                        onClick={() => this.disminuya('corinthians')}
+                        onClick={() => this.props.menosMarcador('corinthians')}
                     >
                         -
                     </button>
                     <button
                         type="button"
-                        onClick={() => this.aumente('corinthians')}
+                        onClick={() => this.props.masMarcador('corinthians')}
                     >
                         +
                     </button>
                 </div>
                 <img src="/ball.png" alt="soccer ball" />
                 <div className="santos">
-                    <dd>{this.state.santos}</dd>
+                    <dd>{this.props.santos}</dd>
                     <dt>Santos FC</dt>
                     <button
                         type="button"
-                        onClick={() => this.disminuya('santos')}
+                        onClick={() => this.props.menosMarcador('santos')}
                     >
                         -
                     </button>
                     <button
                         type="button"
-                        onClick={() => this.aumente('santos')}
+                        onClick={() => this.props.masMarcador('santos')}
                     >
                         +
                     </button>
@@ -60,4 +48,16 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => state;
+const mapDispatchToProps = {
+    masMarcador: aumentarMarcardorAction,
+    menosMarcador: disminuirMarcardorAction,
+};
+
+// Esto es lo que significa
+const fn = connect(mapStateToProps, mapDispatchToProps);
+const NuevoComponent = fn(App);
+export default NuevoComponent;
+
+// Esto es como se suele usar
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
